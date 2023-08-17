@@ -10,7 +10,6 @@ if __name__ == "__main__":
         
     try:
         for line in sys.stdin:
-            lines_processed += 1
             num = line.split()
             if len(num) > 4:
                 getStatus = num[-2]
@@ -18,7 +17,6 @@ if __name__ == "__main__":
                     sta_code[getStatus] += 1
                 total_file = total_file + int(num[-1])
                 lines_processed += 1
-                    
             if lines_processed == 10:
                lines_processed = 0
                print("File size: {}".format(total_file))
