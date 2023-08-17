@@ -2,7 +2,7 @@
 """A script that reads stdin line by line and computes metrics"""
 if __name__ == "__main__":
     import sys
-    sta_code = {'200': 0, '301': 0, '400': 0, '403': 0, '404': 0, '405': 0, '500': 0}
+    sta_code = {'200': 0, '301': 0, '400': 0, '401': 0, '403': 0, '404': 0, '405': 0, '500': 0}
 
     total_file = 0
     lines_processed = 0
