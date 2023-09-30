@@ -7,8 +7,8 @@ def island_perimeter(grid):
         return 
     sum = 0
 
-    for x in (len(grid)):
-        for y in (len(grid[0])):
+    for x in range(len(grid)):
+        for y in range(len(grid[0])):
             if grid[x][y] == 1:
                 sum += 4
                 if x > 0 and grid[x - 1][y] == 1:
