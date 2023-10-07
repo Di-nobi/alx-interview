@@ -24,16 +24,14 @@ def isWinner(x, nums):
                     found_prime = True
                     slots_avaliable -= set(range(num, i + 1, num))
                     break
-            if found_prime:
+            if not found_prime:
                 maria += 1
-            # ben += 1
-            # if len(slots_avaliable) % 2 == 0:
-            #     ben += 1
-            else:
-                ben += 1
+                break
+        else:
+            ben += 1
     if maria > ben:
-        return "maria"
+        return "Maria"
     elif ben > maria:
-        return "ben"
+        return "Ben"
     else:
         return None
