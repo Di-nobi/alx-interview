@@ -30,4 +30,3 @@ if __name__ == "__main__":
         for key, value in sorted(sta_code.items()):
             if value:
                 print(f"{key}: {value}")
-
