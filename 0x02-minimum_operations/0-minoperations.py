@@ -8,7 +8,7 @@ def minOperations(n):
     counter = 2
     while n >= 1:
         while n % 2 == 0:
-            count_move += 2
+            count_move += counter
             n /= counter
         counter = counter + 1
     return count_move
