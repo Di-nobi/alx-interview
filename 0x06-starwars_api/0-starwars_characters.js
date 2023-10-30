@@ -1,35 +1,30 @@
 #!/usr/bin/node
  const request = require('request');
+const api = 'https://swapi-api.hbtn.io/api/films/';
 
-function getData(url) {
-    return new Promise((resolve, reject) => {
-        request(url, (err, res, body) => {
-            if (err) {
-                reject(err);
-            } else if (res.statusCode !== 200) {
-                reject( Error('Error'));
-            } else{
-            resolve(JSON.parse(body));
-            }
-        });
-    });
-}
-function getchar(char) {
-    const promise = char.map(charUrl => getData(charUrl));
-    return Promise.all(promise);
-}
-request('https://swapi-api.hbtn.io/api/films' + process.argv[2], (err, res, body) => {
+request(api + process.argv[2], (err, res, body) => {
     if (err) {
         console.log(err);
+    } else {
+        const chars = JSON.parse(body).characters;
+    
+    getChars(chars, 0);
     }
-    const char = JSON.parse(body).characters;
-    getchar(char)
-    .then(charData => {
-        console.log(charData.name);
-    }).catch(error => {
-        console.log(error);
-    });
+
 });
 
+function getChars (chars, idx) {
+    request(chars[idx], (err, res, body) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(JSON.parse(body).name);
+        }
+
+        if (idx + 1 < chars.length) {
+            getChars(chars, idx + 1);
+        }
+    });
+}
 
 
