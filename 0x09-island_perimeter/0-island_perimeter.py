@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Island perimeter task"""
 
+
 def island_perimeter(grid):
     """Gets the perimeter og a cell in a grid"""
     perimeter = 0
