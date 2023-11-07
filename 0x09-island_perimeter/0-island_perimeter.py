@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 """Island perimeter task"""
 
+
 def island_perimeter(grid):
     """Gets the perimeter og a cell in a grid"""
     if not grid:
-        return 
+        return
     sum = 0
 
     for x in range(len(grid)):
