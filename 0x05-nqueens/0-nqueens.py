@@ -17,6 +17,7 @@ def validate_input(args):
         exit(1)
     return layout
 
+
 def is_safe(board, row, col):
     for prev_row, prev_col in board:
         if col == prev_col or \
@@ -24,6 +25,7 @@ def is_safe(board, row, col):
            col == prev_col + (row - prev_row):
             return False
     return True
+
 
 def solve_nqueens(layout):
     def solve(row, board, result):
