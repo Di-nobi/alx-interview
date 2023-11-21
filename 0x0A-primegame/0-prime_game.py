@@ -1,21 +1,30 @@
 #!/usr/bin/python3
-"""Prime game Algorithm"""
+"""Prime game winner determination"""
+
 
 def isWinner(x, nums):
-    """Determines the winner"""
-    gamers = {'Maria': 0, 'Ben': 0}
-
-    for count in range(x):
-        values = [num for num in range(1, nums[count] + 1)]
-        current_turn = 'Maria'
-        while values:
-            pick = values.pop(0)
-            values = [num for num in values if num % pick != 0]
-            current_turn = 'Ben' if current_turn == 'Maria' else 'Maria'
-        gamers[current_turn] += 1
-    if gamers['Maria'] > gamers['Ben']:
-        return 'Maria'
-    elif gamers['Ben'] > gamers['Maria']:
-        return 'Ben'
-    else:
+    """Prime game winner determination"""
+    if x < 1 or not nums:
         return None
+
+    m_wins = 0
+    b_wins = 0
+
+    n = max(nums)
+    primes = [True] * (n + 1)
+    primes[0] = primes[1] = False
+
+    for x in range(2, int(n**0.5) + 1):
+        if primes[x]:
+            for y in range(x**2, n + 1, x):
+                primes[y] = False
+
+    for n in nums:
+        count = sum(primes[2:n+1])
+        b_wins += count % 2 == 0
+        m_wins += count % 2 == 1
+
+    if m_wins == b_wins:
+        return None
+
+    return 'Maria' if m_wins > b_wins else 'Ben'
